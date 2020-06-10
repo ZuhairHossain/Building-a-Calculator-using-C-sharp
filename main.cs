@@ -1,7 +1,14 @@
 using System;
-
-class MainClass {
-  public static void Main (string[] args) {
-    Console.WriteLine ("Hello World");
-  }
+ 
+namespace MyCalculator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to My Calculator.");
+            Console.Write("Press ENTER key to end program.");
+            Console.ReadLine();
+        }
+    }
 }
