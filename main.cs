@@ -6,67 +6,43 @@ namespace MyCalculator
     {
         private const double _MIN_VALUE_Double = -1000;
         private const double _MAX_VALUE_Double = 1000;
-        private const int _MIN_QTY_Int = 2;
-        private const int _MAX_QTY_Int = 10;
- 
         static void Main(string[] args)
         {
-            double inputDouble = 0;
+            double firstDouble = 0;
+            double secondDouble = 0;
             double totalDouble = 0;
             bool OKBool = true;
-            int quantityInt;
- 
-            double[] _inputValuesDoubleArray;
- 
- 
-            Console.WriteLine("Welcome to My Calculator.");
- 
-            Console.Write("\nEnter how many numbers do you want to add (value between 2 and 10): ");
-            quantityInt = int.Parse(Console.ReadLine());
- 
-            if ((quantityInt < _MIN_QTY_Int) || (quantityInt > _MAX_QTY_Int))
+            Console.WriteLine("Welcome to my Calculator");
+            Console.Write("\nEnter first number ");
+            firstDouble = double.Parse(Console.ReadLine());
+            if ((firstDouble < _MIN_VALUE_Double) || (firstDouble > _MAX_VALUE_Double))
             {
-                Console.WriteLine(
-                    "\nQuantity, {0}, is not within range of {1} and {2}. Re-enter value.\n",
-                    quantityInt, _MIN_QTY_Int, _MAX_QTY_Int);
+                Console.WriteLine("\nFirst input number, {0}, is not within range of {1} and {2}. Program will end.\n",
+                    firstDouble, _MIN_VALUE_Double, _MAX_VALUE_Double);
+                OKBool = false;
             }
-            else
+            if (OKBool)
             {
-                _inputValuesDoubleArray = new double[quantityInt];
+                Console.Write("\nEnter second number: ");
+                secondDouble = double.Parse(Console.ReadLine());
  
-                for (int indexInt = 0; indexInt < quantityInt; indexInt++)
-                {
+                if ((secondDouble < _MIN_VALUE_Double) || (secondDouble > _MAX_VALUE_Double))
+                { 
+                    Console.WriteLine("\nSecond input number, {0}, is not within range of {1} and {2}. Program will end.\n",
+                        secondDouble, _MIN_VALUE_Double, _MAX_VALUE_Double);
                     OKBool = false;
-                    do
-                    {
-                        Console.Write("\nEnter number: ");
-                        inputDouble = double.Parse(Console.ReadLine());
- 
-                        if ((inputDouble < _MIN_VALUE_Double) || (inputDouble > _MAX_VALUE_Double))
-                        {
-                            Console.WriteLine(
-                                "\nInput number, {0}, is not within range of {1} and {2}. Re-enter value.\n",
-                                inputDouble, _MIN_VALUE_Double, _MAX_VALUE_Double);
-                            OKBool = false;
-                        }
-                        else
-                        {
-                            _inputValuesDoubleArray[indexInt] = inputDouble;
-                            OKBool = true;
-                        }
-                    } while (OKBool == false);
                 }
- 
-                for (int indexInt = 0; indexInt < quantityInt; indexInt++)
+            }
+                if (OKBool)
                 {
-                    totalDouble += _inputValuesDoubleArray[indexInt];
-                }
+                    totalDouble = firstDouble + secondDouble;
  
-                Console.WriteLine("\nTotal: {0}\n", totalDouble);
+                Console.WriteLine("\n{0} + {1} = {2}\n",
+                    firstDouble, secondDouble, totalDouble);
             }
  
-            Console.Write("Press ENTER key to end program.");
-            Console.ReadLine();
+                Console.WriteLine("Press ENTER key to end program");
+                Console.ReadLine();
+            }
         }
     }
-}
